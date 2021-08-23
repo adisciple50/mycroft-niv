@@ -1,4 +1,4 @@
-# TODO: Add an appropriate license to your skill before publishing.  See
+# Done - Add an appropriate license to your skill before publishing.  See
 # the LICENSE file for more information.
 
 # Below is the list of outside modules you'll be using in your skill.
@@ -14,8 +14,8 @@ from mycroft.util.log import LOG
 # Each skill is contained within its own class, which inherits base methods
 # from the MycroftSkill class.  You extend this class as shown below.
 
-# TODO: Change "Template" to a unique name for your skill
-class TemplateSkill(MycroftSkill):
+
+class NIVReaderSkill(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
