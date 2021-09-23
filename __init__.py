@@ -19,7 +19,7 @@ class NIVReaderSkill(MycroftSkill):
 
     # The constructor of the skill, which calls MycroftSkill's constructor
     def __init__(self):
-        super(TemplateSkill, self).__init__(name="TemplateSkill")
+        super(NIVReaderSkill, self).__init__(name="NIVReaderSkill")
         
         # Initialize working variables used within the skill.
         self.count = 0
