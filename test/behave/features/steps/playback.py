@@ -13,7 +13,10 @@ def step_impl(context):
 
 @when('the user asks for a bible book without a chapter')
 def step_impl(context):
-    audioservice = AudioService()
     wait_for_dialog(context.bus, ['read.me.a.book.of.the.bible'])
     wait_for_dialog(context.bus, ['Daniel'])
+
+@then('mycroft should prompt for a chapter and playback of a recitation Should begin')
+def step_imp(context):
+    audioservice = AudioService() # excuse for not using a fixture - not every step needs it - wet code i know
     assert(audioservice.is_playing() is True)

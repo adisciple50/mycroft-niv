@@ -11,9 +11,10 @@ def step_impl(context):
     # seams dumb but it will test to see if the audio service is initialised
     assert(audioservice.is_playing() is True or audioservice.is_playing() is False)
 
-@when('the user asks for a bible book without a chapter')
+@when('the user asks for a bible book with a chapter')
 def step_impl(context):
     audioservice = AudioService()
     wait_for_dialog(context.bus, ['read.me.a.book.of.the.bible'])
     wait_for_dialog(context.bus, ['Daniel'])
+    wait_for_dialog(context.bus, ['chapter'])
     assert (audioservice.is_playing() is True)
