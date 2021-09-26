@@ -22,7 +22,7 @@ class NIVReaderSkill(MycroftSkill):
         super(NIVReaderSkill, self).__init__(name="NIVReaderSkill")
         
         # Initialize working variables used within the skill.
-        self.count = 0
+        # self.count = 0
 
     # The "handle_xxxx_intent" function is triggered by Mycroft when the
     # skill's intent is matched.  The intent is defined by the IntentBuilder()
@@ -35,20 +35,20 @@ class NIVReaderSkill(MycroftSkill):
     #   'Hello world'
     #   'Howdy you great big world'
     #   'Greetings planet earth'
-    @intent_handler(IntentBuilder("").require("Hello").require("World"))
-    def handle_hello_world_intent(self, message):
+    # @intent_handler(IntentBuilder("").require("Hello").require("World"))
+    # def handle_hello_world_intent(self, message):
         # In this case, respond by simply speaking a canned response.
         # Mycroft will randomly speak one of the lines from the file
         #    dialogs/en-us/hello.world.dialog
-        self.speak_dialog("hello.world")
+        # self.speak_dialog("hello.world")
 
-    @intent_handler(IntentBuilder("").require("Count").require("Dir"))
-    def handle_count_intent(self, message):
-        if message.data["Dir"] == "up":
-            self.count += 1
-        else:  # assume "down"
-            self.count -= 1
-        self.speak_dialog("count.is.now", data={"count": self.count})
+    # @intent_handler(IntentBuilder("").require("Count").require("Dir"))
+    # def handle_count_intent(self, message):
+    #     if message.data["Dir"] == "up":
+    #         self.count += 1
+    #     else:  # assume "down"
+    #         self.count -= 1
+    #     self.speak_dialog("count.is.now", data={"count": self.count})
 
     # The "stop" method defines what Mycroft does when told to stop during
     # the skill's execution. In this case, since the skill's functionality
@@ -60,7 +60,8 @@ class NIVReaderSkill(MycroftSkill):
     #    return False
 
     @intent_file_handler('play.me.a.book.of.the.bible.intent')
-
+    def handle_random_bible_book_intent(self):
+        pass
 
     def stop(self):
         try:
