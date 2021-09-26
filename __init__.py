@@ -8,7 +8,7 @@
 # when the skill gets installed later by a user.
 
 from adapt.intent import IntentBuilder
-from mycroft.skills.core import MycroftSkill, intent_handler
+from mycroft.skills.core import MycroftSkill, intent_handler, intent_file_handler
 from mycroft.util.log import LOG
 
 # Each skill is contained within its own class, which inherits base methods
@@ -58,6 +58,9 @@ class NIVReaderSkill(MycroftSkill):
     #
     # def stop(self):
     #    return False
+
+    @intent_file_handler('play.me.a.book.of.the.bible.intent')
+
 
     def stop(self):
         try:

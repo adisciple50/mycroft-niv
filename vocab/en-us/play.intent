@@ -1,0 +1,3 @@
+play {book} chapter {chapter}
+recite {book} chapter {chapter}
+play me {book} chapter {chapter} of the bible
