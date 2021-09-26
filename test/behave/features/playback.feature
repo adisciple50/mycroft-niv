@@ -27,3 +27,13 @@ Feature: Interactive Playback
     Given a recitation may or may not be in progress
     When the user asks for a bible book without a chapter
     Then mycroft should prompt for a chapter and playback of a recitation Should begin
+
+  Scenario: user asks to start playback of a random bible book
+    Given a recitation may or may not be in progress
+    When the user asks for a bible book without a chapter
+    Then playback of a recitation Should begin
+
+  Scenario: a user asks whether "is the niv bible installed on my hard disk"
+    Given an english speaking user
+    When the user asks "is david suchet installed on my hard disk"
+    Then mycroft should reply with exactly "yes" or "no"
