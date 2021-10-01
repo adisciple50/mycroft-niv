@@ -14,6 +14,7 @@ from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill, intent_handler, intent_file_handler
 from mycroft.util.log import LOG
 from mycroft.util import play_mp3
+from mycroft.util.log import LOG
 from mycroft.audio import is_speaking, wait_while_speaking
 
 # Each skill is contained within its own class, which inherits base methods
@@ -28,12 +29,15 @@ class NIVReaderSkill(MycroftSkill):
         super(NIVReaderSkill, self).__init__(name="NIVReaderSkill")
         # get playlist
         self.audio_bible_folder = '~/Music/NIV/'
+        self.playlist = os.listdir('~/Music/NIV/')
         self.player = False
-        self.playlist = open('playlist.list', 'r').readlines()
-        for index, line in self.playlist:
-            self.playlist[index] = line.replace(' ','\ ')
-            self.playlist[index] = line.rstrip()
-
+        self.playlist_filename = './playlist.list'
+        with open(self.playlist_filename, 'w') as playlist_file:
+            for index, line in self.playlist:
+                self.playlist[index] = line.replace(' ','\ ')
+                self.playlist[index] = line.rstrip()
+            playlist_file.writelines()
+        self.playlist = open('./playlist.list', 'r').readlines()
 
         # Initialize working variables used within the skill.
         # self.count = 0
@@ -78,6 +82,7 @@ class NIVReaderSkill(MycroftSkill):
     @intent_file_handler('play.me.a.chapter.of.the.bible.intent')
     def handle_random_bible_book_intent(self):
         filename = self.audio_bible_folder + str(random.choice(self.playlist))
+        LOG.debug('bible book now playing is %s',filename)
         if is_speaking():
             wait_while_speaking()
         self.player = play_mp3(filename)
