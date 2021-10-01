@@ -37,7 +37,7 @@ class NIVReaderSkill(MycroftSkill):
             for index in range(len(self.playlist)):
                 self.playlist[index] = self.playlist[index].replace(' ','\ ')
                 self.playlist[index] = self.playlist[index].rstrip()
-            playlist_file.writelines()
+            playlist_file.writelines(self.playlist)
         self.playlist = open(self.playlist_filename, 'r').readlines()
 
         # Initialize working variables used within the skill.
