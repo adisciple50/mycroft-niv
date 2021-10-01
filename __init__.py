@@ -34,9 +34,9 @@ class NIVReaderSkill(MycroftSkill):
         self.player = False
         self.playlist_filename = self.audio_bible_folder + 'playlist.list'
         with open(self.playlist_filename, 'w') as playlist_file:
-            for index, line in self.playlist:
-                self.playlist[index] = line.replace(' ','\ ')
-                self.playlist[index] = line.rstrip()
+            for index in range(self.playlist):
+                self.playlist[index] = self.playlist[index].replace(' ','\ ')
+                self.playlist[index] = self.playlist[index].rstrip()
             playlist_file.writelines()
         self.playlist = open(self.playlist_filename, 'r').readlines()
 
