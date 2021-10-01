@@ -80,7 +80,7 @@ class NIVReaderSkill(MycroftSkill):
 
 
 
-    @intent_file_handler('play.me.a.chapter.of.the.bible.intent')
+    @intent_file_handler('play.me.a.random.chapter.of.the.bible.intent')
     def handle_random_bible_book_intent(self):
         filename = self.audio_bible_folder + str(random.choice(self.playlist))
         LOG.debug('bible book now playing is %s',filename)
