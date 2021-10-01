@@ -16,6 +16,7 @@ from mycroft.util.log import LOG
 from mycroft.util import play_mp3
 from mycroft.util.log import LOG
 from mycroft.audio import is_speaking, wait_while_speaking
+from os.path import expanduser
 
 # Each skill is contained within its own class, which inherits base methods
 # from the MycroftSkill class.  You extend this class as shown below.
@@ -28,8 +29,8 @@ class NIVReaderSkill(MycroftSkill):
     def __init__(self):
         super(NIVReaderSkill, self).__init__(name="NIVReaderSkill")
         # get playlist
-        self.audio_bible_folder = '~/Music/NIV/'
-        self.playlist = os.listdir('~/Music/NIV/')
+        self.audio_bible_folder = expanduser('~/Music/NIV/')
+        self.playlist = os.listdir(self.audio_bible_folder)
         self.player = False
         self.playlist_filename = self.audio_bible_folder + 'playlist.list'
         with open(self.playlist_filename, 'w') as playlist_file:
